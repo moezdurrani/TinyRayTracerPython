@@ -1,3 +1,5 @@
+import math
+
 # Creating a 2D Vector with x and y components
 # __init__ method to initialize them, if not default is 0
 class Vec2f:
@@ -24,6 +26,19 @@ class Vec3f:
             return self.z
         else:
             raise IndexError("Vec3f index out of range")
+
+    def __sub__(self, other):
+        return Vec3f(self.x - other.x, self.y - other.y, self.z - other.z)
+
+    def dot(self, other):
+        return self.x * other.x + self.y * other.y + self.z * other.z
+
+    def length(self):
+        return math.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
+
+    def normalize(self):
+        length = self.length()
+        return Vec3f(self.x / length, self.y / length, self.z / length)
 
 
 # Creating a 3D Vector with x, y, and z components.
