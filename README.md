@@ -9,3 +9,7 @@ The first part was writing an image to the disk, here is the [code](https://gith
 I programmed a 3D sphere using the alogirthm given [here](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/3DSphere.py)
 
 <img src="https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Images/002.png">
+
+Once the 3D Sphere was created, it wasn't hard to add multiple spheres [here](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/MultipleSpheres.py)
+
+<img src="https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Images/003.png">
