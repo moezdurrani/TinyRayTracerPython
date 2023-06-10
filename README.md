@@ -13,3 +13,7 @@ I programmed a 3D sphere using the alogirthm given [here](https://github.com/moe
 Once the 3D Sphere was created, it wasn't hard to add multiple spheres [here](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/MultipleSpheres.py)
 
 <img src="https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Images/003.png">
+
+Now Lights were added to the scene [here](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/Lights.py)
+
+<img src="https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Images/004.png">
