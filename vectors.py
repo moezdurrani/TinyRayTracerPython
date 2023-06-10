@@ -40,6 +40,15 @@ class Vec3f:
         length = self.length()
         return Vec3f(self.x / length, self.y / length, self.z / length)
 
+    def __mul__(self, scalar):
+        return Vec3f(self.x * scalar, self.y * scalar, self.z * scalar)
+
+    def __rmul__(self, scalar):
+        return self.__mul__(scalar)
+
+    def __add__(self, other):
+        return Vec3f(self.x + other.x, self.y + other.y, self.z + other.z)
+
 
 # Creating a 3D Vector with x, y, and z components.
 # It has int components, instead of float
