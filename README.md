@@ -17,3 +17,8 @@ Once the 3D Sphere was created, it wasn't hard to add multiple spheres [here](ht
 Now Lights were added to the scene [here](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/Lights.py)
 
 <img src="https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Images/004.png">
+
+Reflection added to the lights Using Phong Reflection Model (Ambient Reflection, Diffuse Reflection, Specular Reflection).
+The code can be found [here](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/Reflections.py)
+
+<img src="https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Images/005.png">
