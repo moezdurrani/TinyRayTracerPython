@@ -22,3 +22,7 @@ Reflection added to the lights Using Phong Reflection Model (Ambient Reflection,
 The code can be found [here](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/Reflections.py)
 
 <img src="https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Images/005.png">
+
+Shadows were added [here](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/Shadows.py)
+
+<img src="https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Images/006.png">
