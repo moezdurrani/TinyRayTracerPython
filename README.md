@@ -26,3 +26,8 @@ The code can be found [here](https://github.com/moezdurrani/TinyRayTracerPython/
 Shadows were added [here](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/Shadows.py)
 
 <img src="https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Images/006.png">
+
+After adding shadows, Refractions were added using this [algorithm](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/Refractions.py)
+
+<img src="https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Images/007.png">
+
