@@ -55,6 +55,9 @@ class Vec3f:
         else:
             return Vec3f()
 
+    def norm(self):
+        return math.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
+
     # def __mul__(self, scalar):
     #     return Vec3f(self.x * scalar, self.y * scalar, self.z * scalar)
 
@@ -63,6 +66,14 @@ class Vec3f:
             return Vec3f(self.x * other.x, self.y * other.y, self.z * other.z)
         elif isinstance(other, (int, float)):
             return Vec3f(self.x * other, self.y * other, self.z * other)
+
+    # def __mul__(self, other):
+    #     if isinstance(other, Vec3f):
+    #         return Vec3f(self.x * other.x, self.y * other.y, self.z * other.z)
+    #     elif isinstance(other, (int, float)):
+    #         return Vec3f(self.x * other, self.y * other, self.z * other)
+    #     else:
+    #         raise TypeError("Unsupported operand type for *: 'Vec3f' and '{}'".format(type(other)))
 
     def __rmul__(self, scalar):
         return self.__mul__(scalar)
