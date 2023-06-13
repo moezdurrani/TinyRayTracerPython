@@ -101,3 +101,16 @@ class Vec4f:
         self.y = y
         self.z = z
         self.w = w
+
+    # Method that allows to access the components of the vectors with vector[i] notation
+    def __getitem__(self, index):
+        if index == 0:
+            return self.x
+        elif index == 1:
+            return self.y
+        elif index == 2:
+            return self.z
+        elif index == 3:
+            return self.w
+        else:
+            raise IndexError("Vec3f index out of range")
