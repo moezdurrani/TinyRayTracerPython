@@ -31,3 +31,7 @@ After adding shadows, Refractions were added using this [algorithm](https://gith
 
 <img src="https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Images/007.png">
 
+Then the ChessBoad was added [here](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/ChessBoard.py)
+
+<img src="https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Images/008.png">
+
