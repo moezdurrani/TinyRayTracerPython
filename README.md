@@ -1,45 +1,54 @@
 # TinyRayTracerPython
 
-As most part of my research is going to be coded in python, I recreated a ray tracer similar to the one I created in C++ (https://github.com/moezdurrani/tinyRayTracer) in python using numpy.
+As part of my research, I have developed a ray tracer in Python called TinyRayTracerPython. This project is inspired by my previous implementation in C++ (https://github.com/moezdurrani/tinyRayTracer) and has been rewritten using numpy.
 
-The first part was writing an image to the disk, here is the [code](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/ImageToDisk.py).
+## Image Rendering
+The first step in this project was to implement image rendering and saving. The code for this functionality can be found [here](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/ImageToDisk.py).
 
 <img src="https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Images/001.png">
 
-I programmed a 3D sphere using the alogirthm given [here](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/3DSphere.py)
+## Creating a 3D Sphere
+Next, I implemented a 3D sphere using an algorithm provided [here](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/3DSphere.py).
 
 <img src="https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Images/002.png">
 
-Once the 3D Sphere was created, it wasn't hard to add multiple spheres [here](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/MultipleSpheres.py)
+## Multiple Spheres
+Building on the 3D sphere, I extended the ray tracer to support rendering multiple spheres. The code for this can be found [here](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/MultipleSpheres.py).
 
 <img src="https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Images/003.png">
 
-Now Lights were added to the scene [here](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/Lights.py)
+## Adding Lights
+To enhance the scene, I introduced lighting effects. The code for adding lights to the scene can be found [here](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/Lights.py).
 
 <img src="https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Images/004.png">
 
-Reflection added to the lights Using Phong Reflection Model (Ambient Reflection, Diffuse Reflection, Specular Reflection).
-The code can be found [here](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/Reflections.py)
+## Reflections
+Using the Phong Reflection Model, I implemented reflections for the lights in the scene. The code for this feature can be found [here](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/Reflections.py).
 
 <img src="https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Images/005.png">
 
-Shadows were added [here](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/Shadows.py)
+## Shadows
+To create realistic lighting, I added shadows to the scene. The code for implementing shadows can be found [here](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/Shadows.py).
 
 <img src="https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Images/006.png">
 
-After adding shadows, Refractions were added using this [algorithm](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/Refractions.py)
+## Refractions
+To simulate the refraction of light, I implemented refractions in the ray tracer. The algorithm used for this feature can be found [here](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/Refractions.py)
 
 <img src="https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Images/007.png">
 
-Then the ChessBoad was added [here](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/ChessBoard.py)
+## Chessboard
+A Chessboard was added in the background temporarily to properly observe how the laws of optics are working. The code was added [here](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/ChessBoard.py)
 
 <img src="https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Images/008.png">
 
-Instead of a constant color as a background, I made a circular image as a background [here](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/Environment.py)
+## Background Image
+Instead of a constant color background, I created a circular image to serve as the background. The code for generating the background image can be found [here](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/Environment.py)
 
 <img src="https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Images/009.png">
 
-For the purpose of this project, we don't need the Chessboard so it was removed [here](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/NoChessBoard.py)
+## Chessboard Removal
+For the purposes of this project, the chessboard was removed from the scene. The modified code without the chessboard can be found [here](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/NoChessBoard.py)
 
 <img src="https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Images/010.png">
 
