@@ -39,5 +39,9 @@ Instead of a constant color as a background, I made a circular image as a backgr
 
 <img src="https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Images/009.png">
 
+For the purpose of this project, we don't need the Chessboard so it was removed [here](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/NoChessBoard.py)
+
+<img src="https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Images/010.png">
+
 
 
