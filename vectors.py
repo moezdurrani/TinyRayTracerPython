@@ -84,6 +84,14 @@ class Vec3f:
     def __neg__(self):
         return Vec3f(-self.x, -self.y, -self.z)
 
+    def __truediv__(self, other):
+        if isinstance(other, (int, float)):
+            return Vec3f(self.x / other, self.y / other, self.z / other)
+        elif isinstance(other, Vec3f):
+            return Vec3f(self.x / other.x, self.y / other.y, self.z / other.z)
+        else:
+            raise TypeError("Unsupported operand type for division.")
+
 
 # Creating a 3D Vector with x, y, and z components.
 # It has int components, instead of float
