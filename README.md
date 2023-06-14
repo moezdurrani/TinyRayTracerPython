@@ -33,22 +33,22 @@ To create realistic lighting, I added shadows to the scene. The code for impleme
 <img src="https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Images/006.png">
 
 ## Refractions
-To simulate the refraction of light, I implemented refractions in the ray tracer. The algorithm used for this feature can be found [here](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/Refractions.py)
+To simulate the refraction of light, I implemented refractions in the ray tracer. The algorithm used for this feature can be found [here](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/Refractions.py).
 
 <img src="https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Images/007.png">
 
 ## Chessboard
-A Chessboard was added in the background temporarily to properly observe how the laws of optics are working. The code was added [here](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/ChessBoard.py)
+A Chessboard was added in the background temporarily to properly observe how the laws of optics are working. The code was added [here](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/ChessBoard.py).
 
 <img src="https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Images/008.png">
 
 ## Background Image
-Instead of a constant color background, I created a circular image to serve as the background. The code for generating the background image can be found [here](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/Environment.py)
+Instead of a constant color background, I created a circular image to serve as the background. The code for generating the background image can be found [here](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/Environment.py).
 
 <img src="https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Images/009.png">
 
 ## Chessboard Removal
-For the purposes of this project, the chessboard was removed from the scene. The modified code without the chessboard can be found [here](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/NoChessBoard.py)
+For the purposes of this project, the chessboard was removed from the scene. The modified code without the chessboard can be found [here](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/NoChessBoard.py).
 
 <img src="https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Images/010.png">
 
