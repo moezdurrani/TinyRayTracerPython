@@ -35,3 +35,9 @@ Then the ChessBoad was added [here](https://github.com/moezdurrani/TinyRayTracer
 
 <img src="https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Images/008.png">
 
+Instead of a constant color as a background, I made a circular image as a background [here](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Codes/Environment.py)
+
+<img src="https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Images/009.png">
+
+
+
