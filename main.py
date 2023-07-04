@@ -4,6 +4,9 @@ import numpy as np
 from PIL import Image
 import struct
 import math
+from model import Model
+from sphere import Sphere
+import time
 
 envmap_width = 0
 envmap_height = 0
@@ -36,32 +39,6 @@ class Material:
         else:
             self.specular_exponent = spec
 
-class Sphere:
-    def __init__(self, center, radius, material):
-        self.center = center
-        self.radius = radius
-        self.material = material
-
-    def ray_intersect(self, orig, dir, t0):
-        OtC = self.center - orig
-        dt = OtC.dot(dir)
-        d2 = OtC.dot(OtC) - dt * dt
-        if d2 > self.radius * self.radius:
-            return False
-        thc = math.sqrt(self.radius * self.radius - d2)
-        t0[0] = dt - thc
-        t1 = dt + thc
-        if t0[0] < 0:
-            t0[0] = t1
-        if t0[0] < 0:
-            return False
-        return True
-# orig, origin of the ray
-# dir, direction of the ray
-# OtC, vector from origin of the ray to the center of the sphere
-# dtt, dot product of OtC and dir (the direction of the ray)
-# d2, the squared length of OtC minus the squared length of the projection of OtC onto dir.
-# d2 is the perpendicular distance between the ray and the center of the radius
 
 def reflect(I, N):
     return I - N * 2.0 * (I.dot(N))
@@ -85,12 +62,14 @@ def refract(I, N, refractive_index):
     else:
         return I * eta + n * (eta * cosi - math.sqrt(k))
 
-def scene_intersect(orig, dir, spheres):
+def scene_intersect(orig, dir, spheres, duck):
     spheres_dist = math.inf
     checkerboard_dist = math.inf
     hit = None
     N = None
     material = Material()  # Assign a default Material object
+
+    print('5, intersect')
 
     for i in range(len(spheres)):
         dist_i = [0.0]
@@ -100,11 +79,28 @@ def scene_intersect(orig, dir, spheres):
             N = (hit - spheres[i].center).normalize()
             material = spheres[i].material
 
+    # Checking for intersections with the obj model
+
+
+    obj_dist = float('inf')  # Initialize obj_dist with infinity
+    faces = duck.faces  # Get the list of faces from the duck model
+    for fi in range(duck.nfaces()):
+        tnear = [0.0]  # Create a list to store the intersection distance
+        if duck.ray_triangle_intersect(fi, orig, dir, tnear[0]):
+            face = duck.get_face(fi)
+            if tnear[0] < obj_dist:  # Check if the new intersection is closer
+                obj_dist = tnear[0]  # Update the obj_dist variable
+                hit = orig + dir * tnear[0]
+                N = duck.compute_normal(face)  # Compute the surface normal for the triangle
+                material = duck.material
+
     return hit, N, material
 
-def cast_ray(orig, dir, spheres, lights, depth=0):
+def cast_ray(orig, dir, spheres, lights, duck, depth=0):
 
-    point, N, material = scene_intersect(orig, dir, spheres)
+    print('4, cast ray')
+
+    point, N, material = scene_intersect(orig, dir, spheres, duck)
 
     if depth > 4 or point is None:
         u = 0.5 + math.atan2(dir.x, dir.z) / (2 * math.pi)
@@ -123,8 +119,8 @@ def cast_ray(orig, dir, spheres, lights, depth=0):
     reflect_orig = point - N * 1e-3 if reflect_dir.dot(N) < 0 else point + N * 1e-3
     refract_orig = refract_orig = point - N * 1e-3 if refract_dir.dot(N) < 0 else point + N * 1e-3
 
-    reflect_color = cast_ray(reflect_orig, reflect_dir, spheres, lights, depth + 1)
-    refract_color = cast_ray(refract_orig, refract_dir, spheres, lights, depth + 1)
+    reflect_color = cast_ray(reflect_orig, reflect_dir, spheres, lights, duck, depth + 1)
+    refract_color = cast_ray(refract_orig, refract_dir, spheres, lights, duck, depth + 1)
 
     diffuse_light_intensity = 0
     specular_light_intensity = 0
@@ -135,7 +131,7 @@ def cast_ray(orig, dir, spheres, lights, depth=0):
 
         shadow_orig = point - N * 1e-3 if light_dir.dot(N) < 0 else point + N * 1e-3  # checking if the point lies in the shadow of lights[i]
 
-        shadow_pt, shadow_N, tmpmaterial = scene_intersect(shadow_orig, light_dir, spheres)
+        shadow_pt, shadow_N, tmpmaterial = scene_intersect(shadow_orig, light_dir, spheres, duck)
 
         if shadow_pt is not None and (shadow_pt - shadow_orig).length() < light_distance:
             continue
@@ -148,18 +144,20 @@ def cast_ray(orig, dir, spheres, lights, depth=0):
 
     return diffuse_color * diffuse_light_intensity * albedo_0 + Vec3f(1.0, 1.0, 1.0) * specular_light_intensity * albedo_1 + reflect_color * albedo_2 + refract_color * albedo_3
 
-def render(spheres, lights):
+def render(spheres, lights, duck):
     width = 1024
     height = 768
     fov = math.pi / 3.0 # Field of View of the camera
     framebuffer = [Vec3f(0, 0, 0)] * (width * height)
+
+    print('2, In render')
 
     for j in range(height):
         for i in range(width):
             x = (2 * (i + 0.5) / float(width) - 1) * math.tan(fov / 2.0) * width / float(height)
             y = -(2 * (j + 0.5) / float(height) - 1) * math.tan(fov / 2.0)
             dir = Vec3f(x, y, -1).normalize()
-            framebuffer[i + j * width] = cast_ray(Vec3f(0, 0, 0), dir, spheres, lights)
+            framebuffer[i + j * width] = cast_ray(Vec3f(0, 0, 0), dir, spheres, lights, duck)
 
     image = Image.new("RGB", (width, height))
 
@@ -170,6 +168,8 @@ def render(spheres, lights):
                 255 * max(0, min(1, pixel_color.z))
             )
             image.putpixel((i, j), (r, g, b))
+
+    print('3, In render')
 
     image.save("out.png", "PNG")
 
@@ -192,7 +192,14 @@ def load_environment_map(filename):
         sys.exit(-1)
 
 def main():
+
+    start_time = time.time()
+
+    print('0, main started')
+
     envmap, envmap_width, envmap_height = load_environment_map("envmap.jpg")
+
+    print('0.2, environment loaded')
 
     ivory = Material(1.0, (0.6, 0.3, 0.1, 0.0), (0.4, 0.4, 0.3), 50.0)
     glass = Material(1.5, (0.0,  0.5, 0.1, 0.8), (0.6, 0.7, 0.8), 125.0)
@@ -205,12 +212,24 @@ def main():
     spheres.append(Sphere(Vec3f(1.5, -0.5, -18), 3, red_rubber))
     spheres.append(Sphere(Vec3f(7, 5, -18), 4, mirror))
 
+    spheres.append(Sphere(Vec3f(3, 0, -10), 3, red_rubber))
+
     lights = []
     lights.append(light(Vec3f(-20,20,20),1.5))
     lights.append(light(Vec3f(30, 50, -25), 1.8))
     lights.append(light(Vec3f(30, 20, 30), 1.7))
 
-    render(spheres,lights)
+    print('0.4, lights, spheres and materials added')
+
+    duck = Model('objFiles/polygon.obj', mirror)
+
+    print("1, In main, model created")
+
+    render(spheres,lights, duck)
+
+    end_time = time.time()  # Stop measuring the execution time
+    execution_time = (end_time - start_time) / 60.0
+    print(f"Execution time: {execution_time} minutes")
 
 if __name__ == "__main__":
     main()

@@ -55,6 +55,14 @@ class Vec3f:
         else:
             return Vec3f()
 
+    def cross(self, other):
+        if isinstance(other, Vec3f):
+            return Vec3f(
+                self.y * other.z - self.z * other.y,
+                self.z * other.x - self.x * other.z,
+                self.x * other.y - self.y * other.x
+            )
+
     def norm(self):
         return math.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 
