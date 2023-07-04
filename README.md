@@ -56,9 +56,9 @@ For the purposes of this project, the chessboard was removed from the scene. The
 
 | First Image                                 | Second Image                                | Third Image                                 |
 |---------------------------------------------|---------------------------------------------|---------------------------------------------|
-| ![Image 1](https://github.com/moezdurrani/TinyRayTracerPyt/blob/master/Images/011.png) | ![Image 2](https://github.com/moezdurrani/TinyRayTracerPyt/blob/master/Images/012.png) | ![Image 3](https://github.com/moezdurrani/TinyRayTracerPyt/blob/master/Images/013.png) |
+| ![Image 1](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Images/011.png) | ![Image 2](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Images/012.png) | ![Image 3](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/Images/013.png) |
 
-An [algorithm](https://github.com/moezdurrani/TinyRayTracerPyt/blob/master/model.py) was implemented to read the vertices and faces from the meshes of triangulated 3D models. These vertices and faces were utilized to render the models in our scene. The rendering time varied based on the complexity of the models. Below is a summary of the .obj files and the time it took to render them:
+An [algorithm](https://github.com/moezdurrani/TinyRayTracerPython/blob/main/model.py) was implemented to read the vertices and faces from the meshes of triangulated 3D models. These vertices and faces were utilized to render the models in our scene. The rendering time varied based on the complexity of the models. Below is a summary of the .obj files and the time it took to render them:
 
 <div align="center">
   
